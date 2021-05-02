@@ -1,3 +1,5 @@
+if (!process.env.ALREADY_SET) { require('dotenv').config(); }
+
 import express, {Application} from "express";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
