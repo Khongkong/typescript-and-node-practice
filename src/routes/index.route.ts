@@ -1,5 +1,5 @@
 import Route from "./route";
-import IndexController from "../controllers/indexController";
+import IndexController from "../app/controllers/indexController";
 
 class IndexRoute extends Route {
     private indexController = new IndexController();
