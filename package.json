@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_PATH=./dist node dist/app.js",
-    "dev": "nodemon src/app.ts",
+    "start": "NODE_PATH=./dist node -r dotenv/config dist/index.js",
+    "dev": "nodemon -r dotenv/config src/index.ts",
     "build": "tsc -p .",
     "tslint": "tslint -p . src/**/*.ts src/**/*.tsx",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -27,7 +27,8 @@
     "ejs": "^3.1.3",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
-    "sequelize": "^5.22.3"
+    "mysql2": "^2.2.5",
+    "typeorm": "^0.2.32"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.0",

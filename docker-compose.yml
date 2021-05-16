@@ -24,6 +24,7 @@ services:
       --innodb-large-prefix=1
     ]
     restart: always
+    container_name: ts-node-mysql
     ports:
       - 33060:3306
     environment:

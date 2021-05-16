@@ -1,12 +1,9 @@
-if (!process.env.ALREADY_SET) { require('dotenv').config(); }
-
 import express, {Application} from "express";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import bodyParser from "body-parser";
 import path from "path";
 import {router} from "./router";
-
 class App {
     private app: Application;
     constructor() {
@@ -34,7 +31,4 @@ class App {
     }
 }
 
-const app = new App;
-
-const port = process.env.PORT || 5000;
-app.listen(port);
+export default App;
