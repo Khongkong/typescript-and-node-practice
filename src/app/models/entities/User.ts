@@ -1,5 +1,6 @@
 import { IsNotEmpty, Length } from "class-validator";
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, Unique, UpdateDateColumn } from "typeorm";
+import { AfterLoad, BeforeInsert, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, Unique, UpdateDateColumn } from "typeorm";
+import { Crypt } from "../../Util/Crypt";
 
 @Entity()
 @Unique(['email'])
@@ -7,7 +8,7 @@ export class User {
     @PrimaryGeneratedColumn()
     public id!: number;
 
-    @Column({type: 'int'})
+    @Column({type: 'varchar'})
     @Length(3, 100)
     public name!: string;
 
@@ -30,4 +31,14 @@ export class User {
     @Column()
     @UpdateDateColumn()
     public updatedAt!: Date;
+
+    @AfterLoad()
+    public decryptEmail() {
+        this.email = Crypt.decrypt(this.email);
+    }
+
+    @BeforeInsert()
+    public encryptEmail() {
+        this.email = Crypt.encrypt(this.email);
+    }
 }
